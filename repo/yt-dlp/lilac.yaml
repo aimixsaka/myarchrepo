@@ -6,4 +6,6 @@ post_build: git_pkgbuild_commit
 
 update_on:
   - source: github
-    github: janet-lang/janet
+    github: yt-dlp/yt-dlp
+  - source: aur
+    aur: yt-dlp-git
