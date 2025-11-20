@@ -2,7 +2,7 @@
 
 pkgname=yt-dlp-git
 pkgver=2025.11.12.r16.g2c9f0c3
-pkgrel=2
+pkgrel=3
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
 url=https://github.com/yt-dlp/yt-dlp
