@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2025.11.12.r15.g0eed3fe
+pkgver=2025.11.12.r16.g2c9f0c3
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
@@ -28,8 +28,10 @@ optdepends=('ffmpeg: for video post-processing'
             'python-curl-cffi: for impersonating browsers')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+"${url}".git)
-sha256sums=('SKIP')
+source=(git+"${url}".git
+        fix-iqiyi.patch::"https://github.com/yt-dlp/yt-dlp/pull/13955.diff")
+sha256sums=('SKIP'
+            'f77c3178772b617a8277b69b005fb883ca58277fc0558d563b1227de29cf4abc')
 
 pkgver() {
     git -C "${pkgname%-git}" describe --long --tags --abbrev=7 --exclude=nightly | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -38,6 +40,8 @@ pkgver() {
 prepare() {
     # Clean out old wheels etc.
     git -C "${pkgname%-git}" clean -dfx
+    cd "${pkgname%-git}"
+    patch -Np1 -i ../fix-iqiyi.patch
 }
 
 build() {
