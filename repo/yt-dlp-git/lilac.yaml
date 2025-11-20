@@ -9,3 +9,5 @@ update_on:
     github: yt-dlp/yt-dlp
   - source: aur
     aur: yt-dlp-git
+  - source: manual
+    manual: 1
