@@ -1,0 +1,38 @@
+diff --git a/yt_dlp/cookies.py b/yt_dlp/cookies.py
+index 23f90d610..06a62ef98 100644
+--- a/yt_dlp/cookies.py
++++ b/yt_dlp/cookies.py
+@@ -46,7 +46,7 @@
+ from .utils._utils import _YDLLogger
+ from .utils.networking import normalize_url
+ 
+-CHROMIUM_BASED_BROWSERS = {'brave', 'chrome', 'chromium', 'edge', 'opera', 'vivaldi', 'whale'}
++CHROMIUM_BASED_BROWSERS = {'brave', 'chrome', 'chromium', 'edge', 'opera', 'vivaldi', 'whale', 'qutebrowser'}
+ SUPPORTED_BROWSERS = CHROMIUM_BASED_BROWSERS | {'firefox', 'safari'}
+ 
+ 
+@@ -268,6 +268,7 @@ def _get_chromium_based_browser_settings(browser_name):
+             'opera': os.path.join(config, 'opera'),
+             'vivaldi': os.path.join(config, 'vivaldi'),
+             'whale': os.path.join(config, 'naver-whale'),
++            'qutebrowser': os.path.join(os.environ.get('XDG_DATA_HOME', os.path.expanduser('~/.local/share')), 'qutebrowser/webengine'),
+         }[browser_name]
+ 
+     # Linux keyring names can be determined by snooping on dbus while opening the browser in KDE:
+@@ -275,6 +276,7 @@ def _get_chromium_based_browser_settings(browser_name):
+     keyring_name = {
+         'brave': 'Brave',
+         'chrome': 'Chrome',
++        'qutebrowser': 'Chrome',
+         'chromium': 'Chromium',
+         'edge': 'Microsoft Edge' if sys.platform == 'darwin' else 'Chromium',
+         'opera': 'Opera' if sys.platform == 'darwin' else 'Chromium',
+@@ -282,7 +284,7 @@ def _get_chromium_based_browser_settings(browser_name):
+         'whale': 'Whale',
+     }[browser_name]
+ 
+-    browsers_without_profiles = {'opera'}
++    browsers_without_profiles = {'opera', 'qutebrowser'}
+ 
+     return {
+         'browser_dir': browser_dir,
