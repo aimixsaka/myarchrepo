@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2026.08.19.r5.g9fb5969
+pkgver=2026.08.19.r6.g66f4976
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
